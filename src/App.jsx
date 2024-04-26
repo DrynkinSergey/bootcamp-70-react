@@ -3,6 +3,7 @@ import { Modal } from './components/Modal'
 import Section from './components/Section'
 import { SectionWithTitle } from './components/SectionWithTitle'
 import userData from './assets/user.json'
+import Profile from './components/Profile/Profile'
 
 const App = () => {
 	const filmsData = [
@@ -19,6 +20,8 @@ const App = () => {
 	return (
 		<>
 			{/* <Header title='Intro, React' message='Hello' /> */}
+			<Profile userData={userData} />
+
 			<Section data={filmsData} />
 			<Section title='Goods section' data={goodsData} />
 			{/* <Section title='Music section' data={musicSection} /> */}
@@ -54,7 +57,7 @@ const App = () => {
 				<form action=''>
 					<input type='text' />
 					<input type='text' />
-					<buton>Login</buton>
+					<button>Login</button>
 				</form>
 			</Modal>
 		</>
