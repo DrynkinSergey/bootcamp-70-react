@@ -13,3 +13,6 @@ body{
   text-align: center;
   color:blue;
 }
+.bigText{
+  font-size: 5rem;
+}
