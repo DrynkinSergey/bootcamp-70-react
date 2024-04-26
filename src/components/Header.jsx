@@ -3,7 +3,9 @@ const Header = props => {
 	return (
 		<header>
 			<div>
-				<h3>{props.title}</h3>
+				<h3 style={{ color: 'red', textAlign: 'center', fontSize: '2rem', textDecoration: 'underline' }}>
+					{props.title}
+				</h3>
 			</div>
 			<h2>{props.message}</h2>
 			<hr />

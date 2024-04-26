@@ -4,6 +4,7 @@ import Section from './components/Section'
 import { SectionWithTitle } from './components/SectionWithTitle'
 import userData from './assets/user.json'
 import Profile from './components/Profile/Profile'
+import Header from './components/Header'
 
 const App = () => {
 	const filmsData = [
@@ -19,7 +20,7 @@ const App = () => {
 
 	return (
 		<>
-			{/* <Header title='Intro, React' message='Hello' /> */}
+			<Header title='Intro, React' message='Hello' />
 			<Profile userData={userData} />
 
 			<Section data={filmsData} />
