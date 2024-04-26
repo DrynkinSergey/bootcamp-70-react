@@ -1,6 +1,8 @@
 import clsx from 'clsx'
 import s from './Section.module.css'
-
+import { MdDeleteOutline } from 'react-icons/md'
+import { LuListTodo } from 'react-icons/lu'
+import MyIcon from '../../assets/svg/icon.svg'
 const Section = ({ title = 'Default title', data = [] }) => {
 	return (
 		<div>
@@ -10,6 +12,7 @@ const Section = ({ title = 'Default title', data = [] }) => {
 					[s.cursive]: true,
 				})}
 			>
+				<LuListTodo />
 				{title}
 			</h2>
 
@@ -18,7 +21,11 @@ const Section = ({ title = 'Default title', data = [] }) => {
 					{data.map(item => (
 						<li className={s.item} key={item.id}>
 							{item.title}
-							<button>Delete</button>
+
+							<button>
+								<img src={MyIcon} alt='icon' />
+								<MdDeleteOutline size={48} className={s.btnDelete} />
+							</button>
 						</li>
 					))}
 				</ul>

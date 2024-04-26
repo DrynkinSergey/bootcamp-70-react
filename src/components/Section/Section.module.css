@@ -33,3 +33,11 @@
   }
  
 }
+.btnDelete{
+  color:black;
+  transition: all 1.5 ease;
+  &:hover{
+    color:red;
+    rotate:180deg;
+  }
+}
