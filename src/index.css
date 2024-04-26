@@ -1,5 +1,15 @@
+:root{
+  --red: red;
+}
+
+
 body{
   box-sizing: border-box;
   font-size: 1.5rem;
 }
 
+.title{
+  font-size: 3rem;
+  text-align: center;
+  color:blue;
+}

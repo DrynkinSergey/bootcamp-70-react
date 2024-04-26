@@ -1,5 +1,5 @@
 import React from 'react'
 
 export const Button = props => {
-	return <button>{props.children}</button>
+	return <button className='btn'>{props.children}</button>
 }

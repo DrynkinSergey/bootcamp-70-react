@@ -1,11 +1,16 @@
+import s from './Section.module.css'
 const Section = ({ title = 'Default title', data = [] }) => {
 	return (
 		<div>
-			<h2>{title}</h2>
+			<h2 className={s.title}>{title}</h2>
+
 			{data.length ? (
-				<ul>
+				<ul className={s.list}>
 					{data.map(item => (
-						<li key={item.id}>{item.title}</li>
+						<li className={s.item} key={item.id}>
+							{item.title}
+							<button>Delete</button>
+						</li>
 					))}
 				</ul>
 			) : (

@@ -1,6 +1,6 @@
 import { Button } from './components/Button'
-import { Modal } from './components/Modal'
-import Section from './components/Section'
+import { Modal } from './components/Modal/Modal'
+import Section from './components/Section/Section'
 import { SectionWithTitle } from './components/SectionWithTitle'
 import userData from './assets/user.json'
 import Profile from './components/Profile/Profile'

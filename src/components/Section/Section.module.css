@@ -1,0 +1,35 @@
+.title{
+  color:violet;
+}
+.cursive{
+  font-style: italic;
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  gap:10px;
+  max-width: 80%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.item{
+  padding: 10px;
+  box-shadow: 2px 2px 4px 3px gray;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button{
+    background-color: teal;
+    color:white;
+    padding: 10px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+ 
+}
