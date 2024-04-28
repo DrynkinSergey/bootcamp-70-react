@@ -1,9 +1,18 @@
-import css from './Modal.module.css'
-export const Modal = ({ title, children }) => {
+import Button from '../Button/Button'
+import s from './Modal.module.css'
+const Modal = ({ children, title = 'Default modal' }) => {
 	return (
-		<div>
-			<h1 className={css.title}>{title}</h1>
-			<div>{children}</div>
+		<div className={s.wrapper}>
+			<div className={s.content}>
+				<>
+					<h1>{title}</h1>
+					<hr />
+				</>
+				<Button className={s.closeBtn}>×</Button>
+				{children}
+			</div>
 		</div>
 	)
 }
+
+export default Modal
