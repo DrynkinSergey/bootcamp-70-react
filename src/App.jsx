@@ -6,8 +6,8 @@ const App = () => {
 	return (
 		<>
 			{/* <Counter /> */}
-			<ColorPicker />
-			{/* <TodoList /> */}
+			{/* <ColorPicker /> */}
+			<TodoList />
 		</>
 	)
 }
