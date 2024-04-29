@@ -55,11 +55,10 @@ img {
 	transition: all 0.2s ease-in-out;
 	cursor: pointer;
   font-size: 2.5rem;
+  border: 1px solid black;
+
 	&:hover {
 		background-color: #091ec2;
 		color: white;
 	}
-}
-.border{
-  border: 1px solid black;
 }
