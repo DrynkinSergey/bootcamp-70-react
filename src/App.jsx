@@ -5,8 +5,8 @@ import { TodoList } from './components/TodoList/TodoList'
 const App = () => {
 	return (
 		<>
-			<Counter />
-			{/* <ColorPicker /> */}
+			{/* <Counter /> */}
+			<ColorPicker />
 			{/* <TodoList /> */}
 		</>
 	)
