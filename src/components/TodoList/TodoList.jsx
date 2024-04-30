@@ -9,7 +9,7 @@ export const TodoList = () => {
 	const [title, setTitle] = useState('')
 
 	const handleDelete = id => {
-		setTodos(prev => prev.filter(item => item.id !== id)) // [...]
+		setTodos(prev => prev.filter(item => item.id !== id))
 	}
 	const handleAddTodo = () => {
 		const newTodo = {
@@ -30,28 +30,11 @@ export const TodoList = () => {
 	}
 
 	const handleRenameTodo = id => {
-		console.log(id)
 		const newValue = prompt('Enter new value')
-		console.log(newValue)
 		setTodos(prev => prev.map(item => (item.id === id ? { ...item, todo: newValue } : item)))
 	}
 	const handleToggleTodo = id => {
-		console.log(id)
-		// 1. Отримати айді
-		// 2. Пробіжатись по массиву об'єктів
-		// 3. Знайти об'єкт по айді
-		// 4. Замінити значення completed на протележне
-		// 5. Якщо елемент не знайдено повернути його незмінним
 		setTodos(prev => prev.map(item => (item.id === id ? { ...item, completed: !item.completed } : item)))
-
-		// setTodos(prev =>
-		// 	prev.map(item => {
-		// 		if (item.id === id) {
-		// 			return { ...item, completed: !item.completed }
-		// 		}
-		// 		return item
-		// 	})
-		// )
 	}
 
 	return (

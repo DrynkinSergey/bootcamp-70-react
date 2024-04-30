@@ -1,17 +1,55 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import s from './Counter.module.css'
 
 export const Counter = () => {
-	const [count, setCount] = useState(0)
 	const [step, setStep] = useState(1)
+	const [count, setCount] = useState(() => {
+		const savedCount = window.localStorage.getItem('counter')
+		if (savedCount !== null) {
+			return JSON.parse(savedCount)
+		}
+		console.log('Повідомлення буде виведено тільки якщо в ls пустота')
+		return 0
+	})
+
+	// Буде викликано лише один раз!
+	useEffect(() => {
+		console.log('Hello COUNTER')
+	}, [])
+
+	// Запис данних в локал сторейдж
+	useEffect(() => {
+		window.localStorage.setItem('counter', count)
+	}, [count])
+
+	// Буде викликано при зміні count а також при першому рендері
+	useEffect(() => {
+		console.log('Counter is changed', count)
+	}, [count])
+
+	// Буде викликано при зміні step а також при першому рендері
+	useEffect(() => {
+		console.log('Step is changed', step)
+	}, [step])
+
+	// Буде викликано кожен раз при зміні лічильника АБО кроку а також перший раз
+	useEffect(() => {
+		console.log('Змінено лічильник або крок', count, step)
+	}, [count, step])
+
+	useEffect(() => {
+		if (count === 5) {
+			alert('Ви досягли 5')
+		}
+		if (count === -3) {
+			setCount(0)
+		}
+	}, [count])
 
 	const handleIncrement = () => {
 		setCount(prev => prev + step)
 	}
 	const handleDecrement = () => {
-		if (count <= 0) {
-			return
-		}
 		setCount(prev => prev - step)
 	}
 	const handleReset = () => {
