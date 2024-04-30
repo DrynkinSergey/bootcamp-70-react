@@ -4,6 +4,7 @@ import s from './Articles.module.css'
 import { useEffect, useState } from 'react'
 import { Favorites } from './Favorites'
 import { AddArticle } from './AddArticle'
+
 export const ArticlesApp = () => {
 	const [articles, setArticles] = useState(() => JSON.parse(window.localStorage.getItem('articles')) || [])
 	const [selectedTab, setSelectedTab] = useState('favorites')
