@@ -1,11 +1,11 @@
 import { List } from './List'
 import { Sidebar } from './Sidebar'
 import s from './Articles.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Favorites } from './Favorites'
 import { AddArticle } from './AddArticle'
 export const ArticlesApp = () => {
-	const [articles, setArticles] = useState([])
+	const [articles, setArticles] = useState(() => JSON.parse(window.localStorage.getItem('articles')) || [])
 	const [selectedTab, setSelectedTab] = useState('favorites')
 	const [searchStr, setSearchStr] = useState('')
 	const [favorites, setFavorites] = useState([])
@@ -13,6 +13,10 @@ export const ArticlesApp = () => {
 	const addArticle = article => {
 		setArticles([...articles, article])
 	}
+
+	useEffect(() => {
+		window.localStorage.setItem('articles', JSON.stringify(articles))
+	}, [articles])
 
 	const sortArticles = () => {
 		switch (sortType) {
@@ -32,14 +36,15 @@ export const ArticlesApp = () => {
 	const removeArticle = id => {
 		setArticles(articles.filter(article => article.id !== id))
 	}
-	const removeFavorite = id => {
-		setFavorites(favorites.filter(article => article.id !== id))
+	const removeFavorite = item => {
+		setFavorites(favorites.filter(favorite => favorite.id !== item.id))
 	}
 
-	const handleSetFavorites = id => {
-		setFavorites(
-			articles.map(article => (article.id === id ? { ...article, isFavorite: !article.isFavorite } : article))
-		)
+	const handleSetFavorites = item => {
+		if (favorites.some(favorite => favorite.id === item.id)) {
+			return removeFavorite(item)
+		}
+		setFavorites([...favorites, item])
 	}
 
 	const filteredArticles = articles.filter(article => article.title.toLowerCase().includes(searchStr.toLowerCase()))
@@ -49,6 +54,7 @@ export const ArticlesApp = () => {
 			<Sidebar setSelectedTab={setSelectedTab} />
 			{selectedTab === 'home' && (
 				<List
+					favorites={favorites}
 					setSortType={setSortType}
 					articles={sortType ? sortArticles() : filteredArticles}
 					onRemove={removeArticle}
