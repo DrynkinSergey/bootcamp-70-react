@@ -80,7 +80,7 @@ export const TodoList = () => {
 				<Button onClick={openModal}>Open modal</Button>
 			</div>
 			{isOpen && (
-				<Modal onClose={closeModal}>
+				<Modal title='INFO' onClose={closeModal}>
 					<h1>Hello world!!!</h1>
 					<p>
 						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro perspiciatis voluptate at rerum non
