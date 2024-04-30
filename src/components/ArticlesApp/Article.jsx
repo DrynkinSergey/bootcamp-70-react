@@ -16,7 +16,7 @@ export const Article = ({ favorites = [], article, onRemove, onSetFavorites }) =
 				<Button onClick={() => onSetFavorites(article)}>
 					{isExist ? 'Remove from favorites' : 'Add to favorites'}
 				</Button>
-				<Button onClick={() => onRemove(article)}>Remove</Button>
+				<Button onClick={() => onRemove(article.id)}>Remove</Button>
 			</div>
 		</div>
 	)
