@@ -1,11 +1,7 @@
-import ProductsApp from './components/ProuductsApp/ProductsApp'
+import { ArticlesApp } from './components/ArticlesApp/ArticlesApp'
 
 const App = () => {
-	return (
-		<>
-			<ProductsApp />
-		</>
-	)
+	return <ArticlesApp />
 }
 
 export default App
