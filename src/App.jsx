@@ -6,9 +6,9 @@ import Vote from './components/Vote'
 const App = () => {
 	return (
 		<>
-			<Counter />
+			{/* <Counter /> */}
 			{/* <ColorPicker /> */}
-			{/* <TodoList /> */}
+			<TodoList />
 			{/* <Vote /> */}
 		</>
 	)

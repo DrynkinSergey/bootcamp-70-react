@@ -1,12 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import todosData from './../../assets/todos.json'
 import { TodoItem } from './TodoItem'
 import s from './TodoList.module.css'
 import { nanoid } from 'nanoid'
 import Button from './../Button/Button'
+import Modal from '../Modal/Modal'
 export const TodoList = () => {
-	const [todos, setTodos] = useState(todosData)
+	const [todos, setTodos] = useState(() => {
+		const savedTodos = window.localStorage.getItem('todos')
+		if (savedTodos !== null) {
+			return JSON.parse(savedTodos)
+		}
+		return todosData
+	})
 	const [title, setTitle] = useState('')
+	const [isOpen, setIsOpen] = useState(false)
+
+	useEffect(() => {
+		window.localStorage.setItem('todos', JSON.stringify(todos))
+	}, [todos])
 
 	const handleDelete = id => {
 		setTodos(prev => prev.filter(item => item.id !== id))
@@ -36,6 +48,12 @@ export const TodoList = () => {
 	const handleToggleTodo = id => {
 		setTodos(prev => prev.map(item => (item.id === id ? { ...item, completed: !item.completed } : item)))
 	}
+	const openModal = () => {
+		setIsOpen(true)
+	}
+	const closeModal = () => {
+		setIsOpen(false)
+	}
 
 	return (
 		<>
@@ -59,7 +77,18 @@ export const TodoList = () => {
 			<div className='flex'>
 				<Button onClick={handleRemoveSelected}>Remove selected</Button>
 				<Button onClick={handleRemoveAll}>Remove All</Button>
+				<Button onClick={openModal}>Open modal</Button>
 			</div>
+			{isOpen && (
+				<Modal onClose={closeModal}>
+					<h1>Hello world!!!</h1>
+					<p>
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro perspiciatis voluptate at rerum non
+						doloremque minus ducimus error similique atque in, excepturi maxime numquam enim? Beatae exercitationem
+						doloremque in minus?
+					</p>
+				</Modal>
+			)}
 		</>
 	)
 }
