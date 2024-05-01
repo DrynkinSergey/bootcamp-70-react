@@ -1,11 +1,5 @@
-import ProductsApp from './components/ProuductsApp/ProductsApp'
-
 const App = () => {
-	return (
-		<>
-			<ProductsApp />
-		</>
-	)
+	return <></>
 }
 
 export default App
