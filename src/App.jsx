@@ -1,5 +1,7 @@
+import { ArticleApp } from './components/ArticlesApp/ArticleApp'
+
 const App = () => {
-	return <></>
+	return <ArticleApp />
 }
 
 export default App
