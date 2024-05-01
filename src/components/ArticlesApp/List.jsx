@@ -2,6 +2,7 @@ import { ArticleCard } from './ArticleCard'
 import s from './Articles.module.css'
 import { SearchBar } from './SearchBar'
 import { Sort } from './Sort'
+import { motion } from 'framer-motion'
 export const List = ({
 	articles,
 	handleDeleteFromFavorites,
@@ -13,7 +14,19 @@ export const List = ({
 }) => {
 	return (
 		<div className={s.articles}>
-			<h2>Articles page</h2>
+			<motion.h2
+				initial={{ opacity: 0, x: 400 }}
+				animate={{
+					opacity: 1,
+					x: 0,
+					transition: {
+						duration: 0.8,
+						type: 'spring',
+					},
+				}}
+			>
+				Articles page
+			</motion.h2>
 			<div className={s.searchBar}>
 				<SearchBar setSearchStr={setSearchStr} />
 				<Sort setSortType={setSortType} />

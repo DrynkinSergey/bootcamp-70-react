@@ -8,7 +8,7 @@ import { ErrorBoundary } from './ErrorBoundary'
 import Modal from '../Modal/Modal'
 import { AddArticleForm } from './AddArticleForm'
 import { nanoid } from 'nanoid'
-
+import { AnimatePresence } from 'framer-motion'
 export const ArticleApp = () => {
 	const [articles, setArticles] = useState(() => JSON.parse(window.localStorage.getItem('articles')) || data)
 	const [favorites, setFavorites] = useState([])
@@ -81,11 +81,13 @@ export const ArticleApp = () => {
 				/>
 			)}
 			{selectedTab === 'fav' && <Favorites items={favorites} handleDeleteFromFavorites={handleDeleteFromFavorites} />}
-			{isOpen && (
-				<Modal title='Add article' onClose={closeModal}>
-					<AddArticleForm handleAddArticle={handleAddArticle} />
-				</Modal>
-			)}
+			<AnimatePresence>
+				{isOpen && (
+					<Modal title='Add article' onClose={closeModal}>
+						<AddArticleForm handleAddArticle={handleAddArticle} />
+					</Modal>
+				)}
+			</AnimatePresence>
 		</div>
 	)
 }
