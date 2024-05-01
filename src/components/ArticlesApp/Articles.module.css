@@ -63,3 +63,23 @@
   margin: 40px auto;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
 }
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+.input{
+  padding: 5px;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+  font-size: 2rem;
+}
+.searchBar{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  align-items: center;
+  gap: 10px;
+}
