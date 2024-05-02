@@ -62,3 +62,30 @@ img {
 		color: white;
 	}
 }
+.label{
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+  span{
+    font-weight: bold;
+  }
+}
+.input{
+  padding: 5px 10px;
+  font-size: 1.5rem;
+  box-shadow: 2px 2px 4px 3px gray;
+  border-radius: 8px;
+
+}
+.form{
+  display: flex;
+  flex-direction: column  ;
+  gap:10px;
+  box-shadow: 0 0 5px 5px gray;
+  padding: 30px 20px;
+}
+.formWrapper{
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+}
