@@ -6,10 +6,10 @@ export const EmployeesFilter = () => {
 		<div className={s.filtersWrapper}>
 			<h1>Filters</h1>
 			<div className={s.flex}>
-				<input className={s.input} />
+				<input className={s.input} placeholder='Enter search value...' />
 				<label>
 					<input type='checkbox' />
-					<span> isAvailable</span>
+					<span> Who wants to work</span>
 				</label>
 			</div>
 			<div className={s.flex}>

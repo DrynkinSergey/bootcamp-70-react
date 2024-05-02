@@ -61,7 +61,7 @@ export const Form = ({ register }) => {
 	// console.log(firtsFruit, other)
 
 	const handleChangeInput = e => {
-		const { name, value, checked } = e.target
+		const { name, value } = e.target
 		console.log(name, value)
 
 		// 1. If - Else

@@ -13,7 +13,8 @@ const App = () => {
 	}
 	return (
 		<>
-			<Form register={register} />
+			<Employee />
+			{/* <Form register={register} /> */}
 		</>
 	)
 }

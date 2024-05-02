@@ -10,3 +10,5 @@ export const Employee = () => {
 		</>
 	)
 }
+// || = '', 0, false, undefined, null
+// ?? = undefined || null
