@@ -1,7 +1,8 @@
+import clsx from 'clsx'
 import s from './Employee.module.css'
-export const EmployeeCard = ({ id, name, email, bio, skills }) => {
+export const EmployeeCard = ({ id, name, email, bio, skills, onDeleteUser, isOpenToWork }) => {
 	return (
-		<li className={s.userCard}>
+		<li className={clsx(s.userCard, isOpenToWork && 'isOpenToWork')}>
 			<h3>{name}</h3>
 			<p>{email}</p>
 			<p>{bio}</p>
@@ -12,7 +13,9 @@ export const EmployeeCard = ({ id, name, email, bio, skills }) => {
 					</li>
 				))}
 			</ul>
-			<button className={s.btn}>Delete</button>
+			<button className={s.btn} onClick={() => onDeleteUser(id)}>
+				Delete
+			</button>
 		</li>
 	)
 }
