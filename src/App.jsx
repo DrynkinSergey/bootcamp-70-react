@@ -1,5 +1,5 @@
 import { Employee } from './components/Employees/Employee'
-import { UncontrolledForm } from './components/Form/UncontrolledForm'
+import { Form } from './components/Form/Form'
 
 const App = () => {
 	const register = data => {
@@ -13,7 +13,7 @@ const App = () => {
 	}
 	return (
 		<>
-			<UncontrolledForm register={register} />
+			<Form register={register} />
 		</>
 	)
 }
