@@ -1,6 +1,7 @@
 import { Employee } from './components/Employees/Employee'
 import { Form } from './components/Form/Form'
 import { ExampleForm } from './components/FormWithID/ExampleForm'
+import { PetForm } from './components/PetForm/PetForm'
 
 const App = () => {
 	const register = data => {
@@ -14,9 +15,7 @@ const App = () => {
 	}
 	return (
 		<>
-			{/* <Employee /> */}
-			{/* <Form register={register} /> */}
-			<ExampleForm />
+			<PetForm />
 		</>
 	)
 }
