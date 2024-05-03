@@ -66,6 +66,7 @@ img {
   display: flex;
   flex-direction: column;
   gap:5px;
+  position: relative;
   span{
     font-weight: bold;
   }
@@ -78,9 +79,9 @@ img {
 
 }
 .form{
-  display: flex;
-  flex-direction: column  ;
-  gap:10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:30px;
   box-shadow: 0 0 5px 5px gray;
   padding: 30px 20px;
 }
@@ -97,4 +98,11 @@ img {
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   padding: 40px;
+}
+.error{
+  position: absolute;
+  bottom: -20px;
+  left: 10px;
+  color: red;
+  font-size: 16px;
 }
