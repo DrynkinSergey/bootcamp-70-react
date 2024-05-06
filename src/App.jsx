@@ -1,5 +1,7 @@
-import { PostsApp } from './components/PostApp/PostsApp'
-
 export const App = () => {
-	return <PostsApp />
+	return (
+		<div>
+			<h1>Hooks</h1>
+		</div>
+	)
 }
