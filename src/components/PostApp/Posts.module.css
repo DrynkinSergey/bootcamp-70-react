@@ -1,0 +1,14 @@
+.list{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap:20px;
+  padding: 20px;
+  list-style: none;
+}
+.post{
+  padding: 20px;
+  box-shadow: 2px 2px 5px 4px gray;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
