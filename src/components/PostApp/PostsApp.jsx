@@ -10,7 +10,7 @@ import Modal from '../Modal/Modal'
 export const PostsApp = () => {
 	const [items, setItems] = useState([])
 	const [skip, setSkip] = useState(0)
-	const [limit] = useState(5)
+	const [limit, setLimit] = useState(5)
 	const [infinity, setInfinity] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState(false)
@@ -30,8 +30,8 @@ export const PostsApp = () => {
 				setError(false)
 
 				const { posts, total } = searchValue
-					? await fetchPostsByQuery({ skip, q: searchValue })
-					: await fetchPosts({ skip: skip })
+					? await fetchPostsByQuery({ skip, q: searchValue, limit })
+					: await fetchPosts({ skip: skip, limit })
 
 				setItems(prev => [...prev, ...posts])
 				setTotal(total)
@@ -43,7 +43,7 @@ export const PostsApp = () => {
 		}
 
 		getPosts()
-	}, [searchValue, skip])
+	}, [searchValue, skip, limit])
 
 	const handleOpenModal = item => {
 		setIsOpen(true)
@@ -70,6 +70,11 @@ export const PostsApp = () => {
 	return (
 		<div>
 			<SearchBar setSearchValue={handleSetQuery} />
+			<select onChange={e => setLimit(+e.target.value)}>
+				<option value='5'>5</option>
+				<option value='10'>10</option>
+				<option value='15'>15</option>
+			</select>
 			<List items={items} openModal={handleOpenModal} />
 			<Button onClick={() => setInfinity(prev => !prev)}>Enable Infinity scroll</Button>
 			{error && <h2>Something went wrong...</h2>}
@@ -79,6 +84,7 @@ export const PostsApp = () => {
 					<Button onClick={handleChangeSkip}>Load more</Button>
 				</div>
 			) : null}
+
 			{isOpen && (
 				<Modal onClose={handleCloseModal}>
 					<h2>{content.title}</h2>
