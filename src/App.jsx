@@ -1,17 +1,17 @@
 import { AuthForm } from './components/AuthForm/AuthForm'
+import { Header } from './components/Header/Header'
+import { TodolistApp } from './components/Todolist/TodolistApp'
 import { useUser } from './store/hooks'
 
 export const App = () => {
-	const { user, isLoggedIn, logout } = useUser()
+	const { isLoggedIn } = useUser()
 	if (!isLoggedIn) {
 		return <AuthForm />
 	}
 	return (
-		<div className='flex justify-center min-h-screen items-center'>
-			<h2>Hello {user}</h2>
-			<button className='btn btn-primary' onClick={logout}>
-				Logout
-			</button>
+		<div>
+			<Header />
+			<TodolistApp />
 		</div>
 	)
 }
