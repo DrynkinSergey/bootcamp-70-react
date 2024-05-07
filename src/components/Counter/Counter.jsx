@@ -23,6 +23,7 @@ export const Counter = () => {
 		console.log('End calculation')
 		return value * value
 	}
+
 	const result = useMemo(calcData, [value])
 	const minusRef = useRef()
 	const myRef = useRef()
@@ -59,8 +60,11 @@ export const Counter = () => {
 						Plus
 					</button>
 				</div>
+				<button onClick={() => setValue(prev => prev - 1)} id='btn' className='btn btn-outline btn-primary text-4xl'>
+					REF BTN -
+				</button>
 				<button onClick={() => setValue(prev => prev + 1)} id='btn' className='btn btn-outline btn-primary text-4xl'>
-					REF BTN
+					REF BTN +
 				</button>
 			</div>
 		</div>
