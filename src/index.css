@@ -3,112 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-  --red: red;
-}
+
 
 
 body{
   font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
   font-size: 1.5rem;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-}
-
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-}
-/* .flex{
-  justify-content: center;
-  display: flex;
-  gap:20px;
-} */
-.header{
-  background-color: teal;
-  padding: 10px 20px;
-  font-size: 1.5rem;
-  color:white;
-  font-weight: bold;
-}
-img {
-  display: block;
-  max-width: 100%;
-}
-
-.title{
-  font-size: 3rem;
-  text-align: center;
-  color:blue;
-}
-.bigText{
-  font-size: 5rem;
-}
-/* .btn{
-  padding: 10px 22px;
-	border-radius: 4px;
-	border: none;
-	background-color: white;
-	transition: all 0.2s ease-in-out;
-	cursor: pointer;
-  font-size: 2.5rem;
-  border: 1px solid black;
-
-	&:hover {
-		background-color: #091ec2;
-		color: white;
-	}
-} */
-.label{
-  display: flex;
-  flex-direction: column;
-  gap:5px;
-  position: relative;
-  span{
-    font-weight: bold;
-  }
-}
-.input{
-  padding:10px 15px;
-  font-size: 1.5rem;
-  box-shadow: 2px 2px 4px 3px gray;
-  border-radius: 8px;
-
-}
-.form{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap:30px;
-  box-shadow: 0 0 5px 5px gray;
-  padding: 30px 20px;
-}
-.formWrapper{
-  display: grid;
-  place-content: center;
-  min-height: 100vh;
-}
-.isOpenToWork{
-  background-color:green;
-}
-.formExample{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  padding: 40px;
-}
-.error{
-  position: absolute;
-  bottom: -20px;
-  left: 10px;
-  color: red;
-  font-size: 16px;
 }
