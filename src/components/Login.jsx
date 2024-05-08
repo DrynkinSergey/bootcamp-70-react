@@ -1,13 +1,19 @@
 import { Field, Form, Formik } from 'formik'
+import { useAuth } from '../store/hooks'
+import { toast } from 'react-toastify'
 
 export const Login = () => {
+	const { login } = useAuth()
 	const initialValues = {
-		email: '',
-		password: '',
+		email: 'admin@mail.com',
+		password: 'admin',
 	}
 
 	const handleSubmit = values => {
-		console.log(values)
+		if (values.email === 'admin@mail.com' && values.password === 'admin') {
+			return login(values)
+		}
+		toast.error('Invalid data, try anther!')
 	}
 	return (
 		<div>
