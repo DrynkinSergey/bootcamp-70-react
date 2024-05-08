@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useAuth, usePizzas, useRouter } from '../store/hooks'
+import moment from 'moment'
 
 export const Cart = () => {
 	const { cart, removeFromCart, cartTotal, removeCart } = usePizzas()
@@ -11,6 +12,7 @@ export const Cart = () => {
 				items: cart,
 				total: cartTotal(),
 				user,
+				createdAt: moment().format('YYYY-MM-DD, hh:mm:ss'),
 			})
 			.then(() => {
 				removeCart()
@@ -40,11 +42,11 @@ export const Cart = () => {
 					</div>
 				))}
 			</div>
-			<div className='flex justify-center'>
+			<div className='flex justify-center gap-4'>
 				<button onClick={removeCart} className='btn btn-secondary'>
 					Очистити кошик
 				</button>
-				<button onClick={order} className='btn btn-secondary'>
+				<button onClick={order} className='btn btn-primary'>
 					Замовити
 				</button>
 			</div>
