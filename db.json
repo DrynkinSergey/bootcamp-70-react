@@ -1,84 +1,175 @@
 {
-	"pizzas": [
-		{
-			"id": "1",
-			"title": "Тоскана",
-			"price": 315,
-			"weight": 650,
-			"size": 30,
-			"img": "https://oliopizza.com.ua/wp-content/uploads/2023/10/19-300x300.jpg"
-		},
-		{
-			"id": "2",
-			"title": "Маргарита",
-			"price": 200,
-			"weight": 500,
-			"size": 30,
-			"img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/34-1-300x300.jpg"
-		},
-		{
-			"id": "3",
-			"title": "4 сира",
-			"price": 245,
-			"weight": 420,
-			"size": 32,
-			"img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-16-1-300x300.jpg"
-		},
-		{
-			"id": "4",
-			"title": "Цезар",
-			"price": 315,
-			"weight": 555,
-			"size": 32,
-			"img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-tsezar-300x300.jpg"
-		},
-		{
-			"id": "5",
-			"title": "Гаваї",
-			"price": 235,
-			"weight": 500,
-			"size": 32,
-			"img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-7-1-300x300.jpg"
-		},
-		{
-			"id": "6",
-			"title": "Пепероні",
-			"price": 245,
-			"weight": 500,
-			"size": 32,
-			"img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-17-1-300x300.jpg"
-		},
-		{
-			"id": "7",
-			"title": "Полло",
-			"price": 420,
-			"weight": 555,
-			"size": 50,
-			"img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/26-300x300.jpg"
-		},
-		{
-			"id": "8",
-			"title": "Екзотична",
-			"price": 200,
-			"weight": 650,
-			"size": 32,
-			"img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-14-1-300x300.jpg"
-		},
-		{
-			"id": "9",
-			"title": "Груша",
-			"price": 230,
-			"weight": 475,
-			"size": 32,
-			"img": "https://oliopizza.com.ua/wp-content/uploads/2018/05/31-1-300x300.jpg"
-		},
-		{
-			"id": "10",
-			"title": "Сицилійська",
-			"price": 420,
-			"weight": 920,
-			"size": 50,
-			"img": "https://oliopizza.com.ua/wp-content/uploads/2018/05/32-300x300.jpg"
-		}
-	]
+  "pizzas": [
+    {
+      "id": "1",
+      "title": "Тоскана",
+      "price": 315,
+      "weight": 650,
+      "size": 30,
+      "img": "https://oliopizza.com.ua/wp-content/uploads/2023/10/19-300x300.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Маргарита",
+      "price": 200,
+      "weight": 500,
+      "size": 30,
+      "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/34-1-300x300.jpg"
+    },
+    {
+      "id": "3",
+      "title": "4 сира",
+      "price": 245,
+      "weight": 420,
+      "size": 32,
+      "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-16-1-300x300.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Цезар",
+      "price": 315,
+      "weight": 555,
+      "size": 32,
+      "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-tsezar-300x300.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Гаваї",
+      "price": 235,
+      "weight": 500,
+      "size": 32,
+      "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-7-1-300x300.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Пепероні",
+      "price": 245,
+      "weight": 500,
+      "size": 32,
+      "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-17-1-300x300.jpg"
+    },
+    {
+      "id": "7",
+      "title": "Полло",
+      "price": 420,
+      "weight": 555,
+      "size": 50,
+      "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/26-300x300.jpg"
+    },
+    {
+      "id": "8",
+      "title": "Екзотична",
+      "price": 200,
+      "weight": 650,
+      "size": 32,
+      "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-14-1-300x300.jpg"
+    },
+    {
+      "id": "9",
+      "title": "Груша",
+      "price": 230,
+      "weight": 475,
+      "size": 32,
+      "img": "https://oliopizza.com.ua/wp-content/uploads/2018/05/31-1-300x300.jpg"
+    },
+    {
+      "id": "10",
+      "title": "Сицилійська",
+      "price": 420,
+      "weight": 920,
+      "size": 50,
+      "img": "https://oliopizza.com.ua/wp-content/uploads/2018/05/32-300x300.jpg"
+    }
+  ],
+  "orders": [
+    {
+      "id": "a43b",
+      "name": "Ілля",
+      "email": "Petro@mail.com",
+      "phone": "380504321618",
+      "address": "м.Одесса вул. Фонтанська 24",
+      "summary": "Давайте більше серветок!",
+      "check": true,
+      "cart": [
+        {
+          "id": "5",
+          "title": "Гаваї",
+          "price": 235,
+          "weight": 500,
+          "size": 32,
+          "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-7-1-300x300.jpg",
+          "quantity": 2
+        },
+        {
+          "id": "6",
+          "title": "Пепероні",
+          "price": 245,
+          "weight": 500,
+          "size": 32,
+          "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-17-1-300x300.jpg",
+          "quantity": 3
+        }
+      ],
+      "createdAt": "2024-05-08 12:54:41",
+      "status": "wait"
+    },
+    {
+      "id": "54ce",
+      "name": "Аліна",
+      "email": "AlinaCool2413@mail.com.ua",
+      "phone": "380504001245",
+      "address": "м.Київ вул. Перемоги 24",
+      "summary": "Ви надзвичайні!!!🔥",
+      "check": true,
+      "cart": [
+        {
+          "id": "3",
+          "title": "4 сира",
+          "price": 245,
+          "weight": 420,
+          "size": 32,
+          "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-16-1-300x300.jpg",
+          "quantity": 1
+        },
+        {
+          "id": "1",
+          "title": "Тоскана",
+          "price": 315,
+          "weight": 650,
+          "size": 30,
+          "img": "https://oliopizza.com.ua/wp-content/uploads/2023/10/19-300x300.jpg",
+          "quantity": 1
+        },
+        {
+          "id": "4",
+          "title": "Цезар",
+          "price": 315,
+          "weight": 555,
+          "size": 32,
+          "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/pitstsa-tsezar-300x300.jpg",
+          "quantity": 2
+        },
+        {
+          "id": "7",
+          "title": "Полло",
+          "price": 420,
+          "weight": 555,
+          "size": 50,
+          "img": "https://oliopizza.com.ua/wp-content/uploads/2016/11/26-300x300.jpg",
+          "quantity": 2
+        },
+        {
+          "id": "9",
+          "title": "Груша",
+          "price": 230,
+          "weight": 475,
+          "size": 32,
+          "img": "https://oliopizza.com.ua/wp-content/uploads/2018/05/31-1-300x300.jpg",
+          "quantity": 1
+        }
+      ],
+      "createdAt": "2024-05-08 12:56:56",
+      "status": "wait"
+    }
+  ]
 }

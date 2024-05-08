@@ -10,9 +10,9 @@ export const Login = () => {
 	}
 
 	const handleSubmit = values => {
-		if (values.email === 'admin@mail.com' && values.password === 'admin') {
-			return login(values)
-		}
+		// if (values.email === 'admin@mail.com' && values.password === 'admin') {
+		return login(values)
+		// }
 		toast.error('Invalid data, try anther!')
 	}
 	return (

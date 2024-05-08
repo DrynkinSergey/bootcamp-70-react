@@ -1,4 +1,17 @@
+import { useEffect } from 'react'
+import { fetchPizzas } from '../services/api'
+import { usePizza } from '../store/hooks'
+import { PizzaList } from '../components/PizzaList'
+
 export const Pizzas = () => {
+	const { setPizzas } = usePizza()
+	useEffect(() => {
+		const getData = async () => {
+			const data = await fetchPizzas()
+			setPizzas(data)
+		}
+		getData()
+	}, [setPizzas])
 	return (
 		<div
 			className='relative min-h-screen'
@@ -9,8 +22,8 @@ export const Pizzas = () => {
 			}}
 		>
 			<div className='absolute inset-0 z-[1] bg-black bg-opacity-50'></div>
-			<div className='relative z-[2] font-bold text-white text-8xl'>
-				<h1>Pizza CODE 🍕 </h1>
+			<div className='relative z-[2] '>
+				<PizzaList />
 			</div>
 		</div>
 	)

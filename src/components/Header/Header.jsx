@@ -16,6 +16,9 @@ export const Header = () => {
 			<div className='flex gap-4 text-xl'>
 				<button onClick={() => setPage('home')}>Home</button>
 				<button onClick={() => setPage('pizzas')}>Pizzas</button>
+				<button onClick={() => setPage('cart')}>Cart</button>
+
+				{user.email === 'admin@mail.com' && <button onClick={() => setPage('cart')}>Admin panel</button>}
 				<button className='btn ' onClick={handleLogout}>
 					Logout
 				</button>

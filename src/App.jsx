@@ -1,5 +1,7 @@
 import { Header } from './components/Header/Header'
 import { Login } from './components/Login'
+import { Cart } from './pages/Cart'
+import { Checkout } from './pages/Checkout'
 import { Home } from './pages/Home'
 import { Pizzas } from './pages/Pizzas'
 import { useAuth, usePages } from './store/hooks'
@@ -17,7 +19,8 @@ export const App = () => {
 			<Header />
 			{page === 'home' && <Home />}
 			{page === 'pizzas' && <Pizzas />}
-			{/* {page === 'pizzas' && <Cart />} */}
+			{page === 'cart' && <Cart />}
+			{page === 'checkout' && <Checkout />}
 		</div>
 	)
 }
