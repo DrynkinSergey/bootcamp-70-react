@@ -16,7 +16,7 @@ const PostDetails = () => {
 	if (!post) return <span className='loading loading-dots loading-lg' />
 
 	return (
-		<div className='p-4 flex flex-col gap-2'>
+		<section className='p-4 flex flex-col gap-2'>
 			<h1 className='text-center'>Details</h1>
 			<h2 className='font-bold italic'>{post.title}</h2>
 			<p>{post.body}</p>
@@ -27,7 +27,7 @@ const PostDetails = () => {
 					</li>
 				))}
 			</ul>
-		</div>
+		</section>
 	)
 }
 
