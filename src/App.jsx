@@ -7,6 +7,10 @@ import Login from './pages/Login'
 import Team from './components/NestedComponents/Team'
 import Company from './components/NestedComponents/Company'
 import OurMission from './components/NestedComponents/OurMission'
+import Users from './pages/Users'
+import UserDetails from './pages/UserDetails'
+import Posts from './components/NestedComponents/Posts'
+import PostDetails from './components/NestedComponents/PostDetails'
 
 export const App = () => {
 	return (
@@ -21,10 +25,15 @@ export const App = () => {
 						<Route path='team' element={<Team />} />
 						<Route path='company' element={<Company />} />
 						<Route path='ourMission' element={<OurMission />} />
+					</Route>
 
-						{/* https://localhost:3000/about/team */}
-						{/* https://localhost:3000/about/company */}
-						{/* https://localhost:3000/about/ourMission */}
+					<Route path='users' element={<Users />} />
+
+					<Route path='users/:userId' element={<UserDetails />}>
+						<Route path='info' element={<h1>User info</h1>} />
+						<Route path='posts' element={<Posts />}>
+							<Route path='details/:postId' element={<PostDetails />} />
+						</Route>
 					</Route>
 				</Route>
 

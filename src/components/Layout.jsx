@@ -12,9 +12,12 @@ export const Layout = () => {
 				<NavLink className={({ isActive }) => buildLinkClass(isActive, 'activeLink')} to='/about'>
 					About
 				</NavLink>
-				<NavLink className={({ isActive }) => buildLinkClass(isActive, 'activeLink')} to='/login'>
-					Login
+				<NavLink className={({ isActive }) => buildLinkClass(isActive, 'activeLink')} to='/users'>
+					Users
 				</NavLink>
+				{/* <NavLink className={({ isActive }) => buildLinkClass(isActive, 'activeLink')} to='/login'>
+					Login
+				</NavLink> */}
 			</nav>
 
 			{/* Створюється Outlet для того, щоб відмалювати якийсь маршрут */}
