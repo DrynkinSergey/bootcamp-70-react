@@ -1,8 +1,8 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import { buildLinkClass } from '../helpers/addActiveClass'
 import { useAuth } from '../store/hooks'
-import { useState } from 'react'
-import Modal from './Modal/Modal'
+import { Suspense, lazy, useState } from 'react'
+const Modal = lazy(() => import('./Modal/Modal'))
 
 export const Layout = () => {
 	const { logout } = useAuth()
@@ -31,21 +31,25 @@ export const Layout = () => {
 			</nav>
 
 			{isOpen && (
-				<Modal onClose={closeModal} title='Enter leave....'>
-					<div className='flex gap-4 justify-center items-center p-10'>
-						<button className='btn btn-primary' onClick={logout}>
-							Yes
-						</button>
-						<button className='btn btn-error' onClick={closeModal}>
-							No
-						</button>
-					</div>
-				</Modal>
+				<Suspense fallback={<span className='loading loading-ring loading-lg text-6xl'></span>}>
+					<Modal onClose={closeModal} title='Enter leave....'>
+						<div className='flex gap-4 justify-center items-center p-10'>
+							<button className='btn btn-primary' onClick={logout}>
+								Yes
+							</button>
+							<button className='btn btn-error' onClick={closeModal}>
+								No
+							</button>
+						</div>
+					</Modal>
+				</Suspense>
 			)}
 
 			{/* Створюється Outlet для того, щоб відмалювати якийсь маршрут */}
 			<div className='p-4  min-h-screen'>
-				<Outlet />
+				<Suspense fallback={<span className='loading loading-ring loading-lg'></span>}>
+					<Outlet />
+				</Suspense>
 			</div>
 		</div>
 	)

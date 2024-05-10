@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom'
 import { fetchUsersById } from '../services/api'
 import { buildLinkClass } from '../helpers/addActiveClass'
@@ -45,7 +45,9 @@ const UserDetails = () => {
 						Show user posts
 					</NavLink>
 				</nav>
-				<Outlet />
+				<Suspense fallback={<span className='loading loading-spinner text-error'></span>}>
+					<Outlet />
+				</Suspense>
 			</section>
 		</div>
 	)

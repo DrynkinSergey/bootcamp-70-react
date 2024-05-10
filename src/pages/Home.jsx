@@ -1,4 +1,4 @@
-export const Home = () => {
+const Home = () => {
 	return (
 		<div>
 			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere a numquam eveniet possimus placeat omnis, commodi
@@ -12,3 +12,4 @@ export const Home = () => {
 		</div>
 	)
 }
+export default Home

@@ -1,17 +1,28 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Home } from './pages/Home'
-import { About } from './pages/About'
+// import Home from './pages/Home'
+// import About from './pages/About'
 import { NotFound } from './pages/NotFound'
 import { Layout } from './components/Layout'
 import Login from './pages/Login'
-import Team from './components/NestedComponents/Team'
-import Company from './components/NestedComponents/Company'
-import OurMission from './components/NestedComponents/OurMission'
-import Users from './pages/Users'
-import UserDetails from './pages/UserDetails'
-import Posts from './components/NestedComponents/Posts'
-import PostDetails from './components/NestedComponents/PostDetails'
+// import Team from './components/NestedComponents/Team'
+// import Company from './components/NestedComponents/Company'
+// import OurMission from './components/NestedComponents/OurMission'
+// import Users from './pages/Users'
+// import UserDetails from './pages/UserDetails'
+// import Posts from './components/NestedComponents/Posts'
+// import PostDetails from './components/NestedComponents/PostDetails'
 import { PrivateRoute } from './Routes/PrivateRoute'
+import { lazy } from 'react'
+
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const Team = lazy(() => import('./components/NestedComponents/Team'))
+const Company = lazy(() => import('./components/NestedComponents/Company'))
+const OurMission = lazy(() => import('./components/NestedComponents/OurMission'))
+const Users = lazy(() => import('./pages/Users'))
+const UserDetails = lazy(() => import('./pages/UserDetails'))
+const Posts = lazy(() => import('./components/NestedComponents/Posts'))
+const PostDetails = lazy(() => import('./components/NestedComponents/PostDetails'))
 
 export const App = () => {
 	return (
@@ -32,24 +43,10 @@ export const App = () => {
 					<Route path='about' element={<About />}>
 						<Route path='team' element={<Team />} />
 						<Route path='company' element={<Company />} />
-						<Route
-							path='ourMission'
-							element={
-								<PrivateRoute>
-									<OurMission />
-								</PrivateRoute>
-							}
-						/>
+						<Route path='ourMission' element={<OurMission />} />
 					</Route>
 
-					<Route
-						path='users'
-						element={
-							<PrivateRoute>
-								<Users />
-							</PrivateRoute>
-						}
-					/>
+					<Route path='users' element={<Users />} />
 					{/* <Route path='users' element={<Navigate to='/profiles' />} /> */}
 
 					<Route path='users/:userId' element={<UserDetails />}>

@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import { buildLinkClass } from '../helpers/addActiveClass'
 
-export const About = () => {
+const About = () => {
 	return (
 		<div>
 			<h1>Welcome to our website!</h1>
@@ -20,3 +20,4 @@ export const About = () => {
 		</div>
 	)
 }
+export default About

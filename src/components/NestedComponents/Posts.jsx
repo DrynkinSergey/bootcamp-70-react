@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Link, Outlet, useParams } from 'react-router-dom'
 import { fetchPostsById } from '../../services/api'
 
@@ -26,7 +26,9 @@ const Posts = () => {
 					</li>
 				))}
 			</ul>
-			<Outlet />
+			<Suspense fallback={<span className='loading loading-infinity loading-lg'></span>}>
+				<Outlet />
+			</Suspense>
 		</div>
 	)
 }
