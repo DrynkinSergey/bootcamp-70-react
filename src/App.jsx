@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { About } from './pages/About'
 import { NotFound } from './pages/NotFound'
@@ -11,6 +11,7 @@ import Users from './pages/Users'
 import UserDetails from './pages/UserDetails'
 import Posts from './components/NestedComponents/Posts'
 import PostDetails from './components/NestedComponents/PostDetails'
+import { PrivateRoute } from './Routes/PrivateRoute'
 
 export const App = () => {
 	return (
@@ -18,16 +19,38 @@ export const App = () => {
 			{/* Завжди створюється обгортка Routes, це дає нам набір маршрутів */}
 			<Routes>
 				{/* В коллекції маршрутів будуть окремі роути */}
-				<Route path='/' element={<Layout />}>
+				<Route
+					path='/'
+					element={
+						<PrivateRoute>
+							<Layout />
+						</PrivateRoute>
+					}
+				>
 					<Route index element={<Home />} />
 
 					<Route path='about' element={<About />}>
 						<Route path='team' element={<Team />} />
 						<Route path='company' element={<Company />} />
-						<Route path='ourMission' element={<OurMission />} />
+						<Route
+							path='ourMission'
+							element={
+								<PrivateRoute>
+									<OurMission />
+								</PrivateRoute>
+							}
+						/>
 					</Route>
 
-					<Route path='users' element={<Users />} />
+					<Route
+						path='users'
+						element={
+							<PrivateRoute>
+								<Users />
+							</PrivateRoute>
+						}
+					/>
+					{/* <Route path='users' element={<Navigate to='/profiles' />} /> */}
 
 					<Route path='users/:userId' element={<UserDetails />}>
 						<Route path='info' element={<h1>User info</h1>} />
@@ -39,7 +62,7 @@ export const App = () => {
 
 				<Route path='/login' element={<Login />} />
 				{/* 404 page */}
-				<Route path='*' element={<NotFound />} />
+				<Route path='*' element={<Navigate to='/' />} />
 			</Routes>
 		</>
 	)

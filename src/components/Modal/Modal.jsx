@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import Button from '../Button/Button'
 import s from './Modal.module.css'
 const Modal = ({ children, title = 'Default modal', onClose }) => {
 	const handleBackDropClick = e => {
@@ -27,9 +26,9 @@ const Modal = ({ children, title = 'Default modal', onClose }) => {
 					<h1>{title}</h1>
 					<hr />
 				</>
-				<Button className={s.closeBtn} onClick={onClose}>
+				<button className={s.closeBtn} onClick={onClose}>
 					×
-				</Button>
+				</button>
 				{children}
 			</div>
 		</div>
