@@ -1,16 +1,10 @@
 import { useEffect, useState } from 'react'
 import { fetchUsers } from '../services/api'
 import { Link, useLocation, useSearchParams } from 'react-router-dom'
+import { useHttp } from '../hooks/useHttp'
 
 const Users = () => {
-	const [users, setUsers] = useState([])
-	useEffect(() => {
-		const getUsers = async () => {
-			const data = await fetchUsers()
-			setUsers(data)
-		}
-		getUsers()
-	}, [])
+	const [users] = useHttp(fetchUsers)
 
 	const location = useLocation() // +
 	// console.log(location)
@@ -32,7 +26,7 @@ const Users = () => {
 	// console.log(typeof page, typeof limit)
 
 	const getFilteredData = () => {
-		return users.filter(user => user.firstName.toLowerCase().includes(query.toLowerCase()))
+		return users?.filter(user => user.firstName.toLowerCase().includes(query.toLowerCase()))
 	}
 	const filteredData = getFilteredData()
 	return (
@@ -48,7 +42,7 @@ const Users = () => {
 			/>
 
 			<ul className='flex flex-col gap-4'>
-				{filteredData.map(user => (
+				{filteredData?.map(user => (
 					<li className='text-2xl font-bold' key={user.id}>
 						<Link to={user.id.toString()} state={location}>
 							{user.firstName} {user.lastName}

@@ -1,26 +1,20 @@
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense } from 'react'
 import { Link, Outlet, useParams } from 'react-router-dom'
 import { fetchPostsById } from '../../services/api'
+import { useHttp } from '../../hooks/useHttp'
 
 const Posts = () => {
 	const { userId } = useParams()
 	/* https://localhost:3000/users/1/posts */
 
-	const [posts, setPosts] = useState(null)
-	useEffect(() => {
-		const getPosts = async () => {
-			const data = await fetchPostsById(userId)
-			setPosts(data)
-		}
-		getPosts()
-	}, [userId])
+	const [posts, _, loading] = useHttp(fetchPostsById, userId)
 
-	if (!posts) return <span className='loading loading-dots loading-lg' />
+	if (loading) return <span className='loading loading-dots loading-lg' />
 
 	return (
 		<div className='grid gap-4 grid-cols-2'>
 			<ul>
-				{posts.map((post, idx) => (
+				{posts?.map((post, idx) => (
 					<li className='text-xl font-bold' key={post.id}>
 						{idx + 1}.<Link to={`details/${post.id}`}>{post.title}</Link>
 					</li>

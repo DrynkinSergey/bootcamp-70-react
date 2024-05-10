@@ -2,6 +2,7 @@ import { Suspense, useEffect, useRef, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom'
 import { fetchUsersById } from '../services/api'
 import { buildLinkClass } from '../helpers/addActiveClass'
+import { useHttp } from '../hooks/useHttp'
 
 const UserDetails = () => {
 	const { userId } = useParams()
@@ -9,14 +10,7 @@ const UserDetails = () => {
 	///////////////////////////////////////////////////////
 	const goBackRef = useRef(location.state || '/users') //
 	///////////////////////////////////////////////////////
-	const [user, setUser] = useState(null)
-	useEffect(() => {
-		const getUser = async () => {
-			const data = await fetchUsersById(userId)
-			setUser(data)
-		}
-		getUser()
-	}, [userId])
+	const [user] = useHttp(fetchUsersById, userId)
 
 	if (!user) return <span className='loading loading-dots loading-lg' />
 
