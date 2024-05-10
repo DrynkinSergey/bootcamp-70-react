@@ -1,10 +1,14 @@
-import { useEffect, useState } from 'react'
-import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom'
 import { fetchUsersById } from '../services/api'
 import { buildLinkClass } from '../helpers/addActiveClass'
 
 const UserDetails = () => {
 	const { userId } = useParams()
+	const location = useLocation()
+	///////////////////////////////////////////////////////
+	const goBackRef = useRef(location.state || '/users') //
+	///////////////////////////////////////////////////////
 	const [user, setUser] = useState(null)
 	useEffect(() => {
 		const getUser = async () => {
@@ -13,14 +17,13 @@ const UserDetails = () => {
 		}
 		getUser()
 	}, [userId])
-	console.log('Render')
 
 	if (!user) return <span className='loading loading-dots loading-lg' />
 
 	return (
 		<div className='grid grid-cols-[1fr_3fr] gap-4'>
 			<div>
-				<Link to='/users'>Go back</Link>
+				<Link to={goBackRef.current}>Go back</Link>
 				<h1>UserDetails #{userId}</h1>
 				<img src={user.image} alt={user.lastName} />
 				<h2>
