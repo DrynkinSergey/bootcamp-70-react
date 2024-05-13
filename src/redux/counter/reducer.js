@@ -9,6 +9,23 @@ const initialState = {
 
 export const counterReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case 'INCREMENT': {
+			return {
+				...state,
+				count: state.count + state.step,
+			}
+		}
+
+		case 'DECREMENT': {
+			return {
+				...state,
+				count: state.count - state.step,
+			}
+		}
+
+		case 'RESET': {
+			return initialState
+		}
 		default:
 			return state
 	}
