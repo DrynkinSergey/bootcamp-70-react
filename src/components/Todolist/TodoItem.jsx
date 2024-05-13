@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 import { deleteTodo, likeTodo, toggleTodo } from '../../redux/todolist/actions'
 import { FaStar } from 'react-icons/fa'
 
-export const TodoItem = ({ todo }) => {
+export const TodoItem = ({ todo, openElement }) => {
 	const dispatch = useDispatch()
 	return (
 		<div className='card  bg-base-100 shadow-xl relative'>
@@ -21,6 +21,9 @@ export const TodoItem = ({ todo }) => {
 					</label>
 				</div>
 				<div className='card-actions justify-end'>
+					<button className='btn btn-secondary' onClick={() => openElement(todo)}>
+						Edit
+					</button>
 					<button className='btn btn-success' onClick={() => dispatch(likeTodo(todo.id))}>
 						Like
 					</button>

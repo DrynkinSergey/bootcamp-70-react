@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, LIKE_TODO, TOGGLE_TODO } from './constants'
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, LIKE_TODO, TOGGLE_TODO } from './constants'
 
 const initialState = {
 	todos: [
@@ -32,6 +32,12 @@ export const todoReducer = (state = initialState, action) => {
 			return {
 				...state,
 				todos: state.todos.map(item => (item.id === action.payload ? { ...item, liked: !item.liked } : item)),
+			}
+		}
+		case EDIT_TODO: {
+			return {
+				...state,
+				todos: state.todos.map(item => (item.id === action.payload.id ? { ...action.payload } : item)),
 			}
 		}
 		default:
