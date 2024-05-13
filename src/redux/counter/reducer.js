@@ -1,5 +1,7 @@
 // 1.  Створили початковий стан
 
+import { CHANGE_STEP, DECREMENT, INCREMENT, RESET } from './constants'
+
 const initialState = {
 	count: 0,
 	step: 1,
@@ -9,22 +11,29 @@ const initialState = {
 
 export const counterReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case 'INCREMENT': {
+		case INCREMENT: {
 			return {
 				...state,
 				count: state.count + state.step,
 			}
 		}
 
-		case 'DECREMENT': {
+		case DECREMENT: {
 			return {
 				...state,
 				count: state.count - state.step,
 			}
 		}
 
-		case 'RESET': {
+		case RESET: {
 			return initialState
+		}
+
+		case CHANGE_STEP: {
+			return {
+				...state,
+				step: action.payload,
+			}
 		}
 		default:
 			return state
