@@ -1,5 +1,7 @@
 # USE PERSIST WITH REDUX
 
+## Redux docs https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist
+
 1. У файлі `store.js` додайте наступний код:
 
 - Додаємо імпорти в проект
