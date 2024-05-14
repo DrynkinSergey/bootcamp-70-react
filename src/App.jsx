@@ -1,3 +1,4 @@
+import { Counter } from './components/Counter/Counter'
 import { TodolistApp } from './components/Todolist/TodolistApp'
 
 export const App = () => {

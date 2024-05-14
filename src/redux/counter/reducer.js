@@ -1,6 +1,7 @@
 // 1.  Створили початковий стан
 
-import { CHANGE_STEP, DECREMENT, INCREMENT, RESET } from './constants'
+import { createReducer } from '@reduxjs/toolkit'
+import { changeStep, decrement, increment, reset } from './actions'
 
 const initialState = {
 	count: 0,
@@ -9,33 +10,49 @@ const initialState = {
 
 // 2. Створили функцію редьюсер. Це головна функція по роботі з даними
 
-export const counterReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case INCREMENT: {
-			return {
-				...state,
-				count: state.count + state.step,
-			}
-		}
-
-		case DECREMENT: {
-			return {
-				...state,
-				count: state.count - state.step,
-			}
-		}
-
-		case RESET: {
+export const counterReducer = createReducer(initialState, builder => {
+	builder
+		.addCase(increment, (state, action) => {
+			state.count = state.count + state.step
+		})
+		.addCase(decrement, (state, action) => {
+			state.count -= state.step
+		})
+		.addCase(reset, (state, action) => {
 			return initialState
-		}
+		})
+		.addCase(changeStep, (state, action) => {
+			state.step = action.payload
+		})
+})
 
-		case CHANGE_STEP: {
-			return {
-				...state,
-				step: action.payload,
-			}
-		}
-		default:
-			return state
-	}
-}
+// export const counterReducer = (state = initialState, action) => {
+// 	switch (action.type) {
+// 		case increment.type: {
+// 			return {
+// 				...state,
+// 				count: state.count + state.step,
+// 			}
+// 		}
+
+// 		case decrement.type: {
+// 			return {
+// 				...state,
+// 				count: state.count - state.step,
+// 			}
+// 		}
+
+// 		case reset.type: {
+// 			return initialState
+// 		}
+
+// 		case changeStep.type: {
+// 			return {
+// 				...state,
+// 				step: action.payload,
+// 			}
+// 		}
+// 		default:
+// 			return state
+// 	}
+// }

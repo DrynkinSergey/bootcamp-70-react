@@ -1,15 +1,13 @@
-import { devToolsEnhancer } from '@redux-devtools/extension'
-import { combineReducers, createStore } from 'redux'
 import { counterReducer } from './counter/reducer'
 import { todoReducer } from './todolist/reducer'
 import { filterReducer } from './filter/reducer'
+import { configureStore } from '@reduxjs/toolkit'
 
-const enhancer = devToolsEnhancer()
-
-const rootReducer = combineReducers({
-	counter: counterReducer,
-	todolist: todoReducer,
-	filter: filterReducer,
+export const store = configureStore({
+	reducer: {
+		counter: counterReducer,
+		todolist: todoReducer,
+		filter: filterReducer,
+	},
+	devTools: true,
 })
-
-export const store = createStore(rootReducer, enhancer)
