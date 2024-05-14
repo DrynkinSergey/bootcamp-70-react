@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import s from './Counter.module.css'
-import { changeStep, decrement, increment, reset } from '../../redux/counter/actions'
-import { selectCounter, selectStep } from '../../redux/counter/selectors'
+
 import { useEffect } from 'react'
+import { changeStep, decrement, increment, reset, selectCounter, selectStep } from '../../redux/counter/slice'
 export const Counter = () => {
 	// Забираємо дані з редаксу
 	const counter = useSelector(selectCounter)

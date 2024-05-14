@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-import { editTodo } from '../../redux/todolist/actions'
+import { editTodo } from '../../redux/todolist/slice'
 
 export const EditTodo = ({ todo, close }) => {
 	const dispatch = useDispatch()

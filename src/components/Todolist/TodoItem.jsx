@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
-import { deleteTodo, likeTodo, toggleTodo } from '../../redux/todolist/actions'
 import { FaStar } from 'react-icons/fa'
+import { deleteTodo, likeTodo, toggleTodo } from '../../redux/todolist/slice'
 
 export const TodoItem = ({ todo, openElement }) => {
 	const dispatch = useDispatch()

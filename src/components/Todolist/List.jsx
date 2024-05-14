@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux'
 import { TodoItem } from './TodoItem'
-import { selectTodos } from './../../redux/todolist/selectors'
-import { selectFilter } from '../../redux/filter/selectors'
 import { getFilteredData } from './../../helpers/getFilteredData'
 import { useState } from 'react'
 import Modal from '../Modal/Modal'
 import { EditTodo } from './EditTodo'
+import { selectTodos } from '../../redux/todolist/slice'
+import { selectFilter } from '../../redux/filter/slice'
 
 export const List = () => {
 	const todos = useSelector(selectTodos)
