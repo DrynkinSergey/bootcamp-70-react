@@ -5,10 +5,14 @@ import 'modern-normalize'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Provider } from 'react-redux'
-import { store } from './redux/store'
+import { persistor, store } from './redux/store'
+import { PersistGate } from 'redux-persist/integration/react'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<Provider store={store}>
-		<App />
-		<ToastContainer autoClose={1500} />
+		<PersistGate loading={null} persistor={persistor}>
+			<App />
+			<ToastContainer autoClose={1500} />
+		</PersistGate>
 	</Provider>
 )
