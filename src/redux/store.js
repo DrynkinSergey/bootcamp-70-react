@@ -9,5 +9,5 @@ export const store = configureStore({
 		todolist: todoReducer,
 		filter: filterReducer,
 	},
-	devTools: true,
+	devTools: import.meta.env.mode !== 'production',
 })
