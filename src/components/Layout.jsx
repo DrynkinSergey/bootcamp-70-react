@@ -8,7 +8,7 @@ export const Layout = () => {
 			<main className='flex-grow'>
 				<Outlet />
 			</main>
-			<footer className='footer p-10 bg-neutral text-neutral-content'>
+			<footer className='footer p-2 bg-neutral text-neutral-content'>
 				<nav>
 					<h6 className='footer-title'>Services</h6>
 					<a className='link link-hover'>Branding</a>

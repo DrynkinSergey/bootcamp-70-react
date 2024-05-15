@@ -12,7 +12,7 @@ const slice = createSlice({
 	initialState,
 	selectors: {
 		selectTransactions: state => state.transactions,
-		selectBalance: state => state.balance,
+		selectBalance: state => state.transactions.reduce((acc, item) => acc + item.sum, 0),
 		selectIncome: state => state.totalIncome,
 		selectExpense: state => state.totalExpense,
 	},

@@ -20,3 +20,6 @@ body{
   font-weight: bold;
   font-size: 1.5rem;
 }
+.navLink{
+  @apply text-blue-700 font-bold border-b-4  border-blue-700 pb-1 ;
+}
