@@ -3,29 +3,32 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectExpense, selectIncome } from '../redux/catsSlice'
 import ReactDatePicker from 'react-datepicker'
 import { useState } from 'react'
-import { addTransaction } from '../redux/transactionsSlice'
-import { nanoid } from '@reduxjs/toolkit'
-import { useNavigate } from 'react-router-dom'
-import { selectCurrentUser } from '../redux/authSlice'
+import { editTransaction, selectTransactions } from '../redux/transactionsSlice'
+import { useNavigate, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
-export const AddForm = () => {
+export const EditForm = () => {
 	const dispatch = useDispatch()
+	const { id } = useParams()
+	const transacitons = useSelector(selectTransactions)
+	const editedTransaction = transacitons.find(item => item.id === id)
 	const navigate = useNavigate()
 	const income = useSelector(selectIncome)
 	const expense = useSelector(selectExpense)
-	const [startDate, setStartDate] = useState(new Date())
-	const user = useSelector(selectCurrentUser)
+	const [startDate, setStartDate] = useState(editedTransaction.date)
+
 	const initialValues = {
-		sum: '',
-		type: 'Expense',
-		category: '',
-		comment: '',
+		...editedTransaction,
+		sum: Math.abs(editedTransaction.sum),
 	}
 
 	const handleSubmit = data => {
 		const sum = data.type === 'Income' ? +data.sum : -data.sum
-		dispatch(addTransaction({ owner: user.email, id: nanoid(), ...data, date: startDate, sum }))
-		navigate('/')
+		dispatch(editTransaction({ id: editedTransaction.id, ...data, date: startDate, sum }))
+		toast.info('Transaction edited!')
+		setTimeout(() => {
+			navigate('/')
+		}, 1000)
 	}
 
 	return (
@@ -95,7 +98,7 @@ export const AddForm = () => {
 					</div>
 					<div className='form-control mt-6 flex flex-col gap-2'>
 						<button type='submit' className='btn btn-primary'>
-							Create transaction
+							Edit transaction
 						</button>
 						<button onClick={() => navigate('/')} type='button' className='btn btn-error'>
 							Cancel

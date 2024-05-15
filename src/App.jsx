@@ -8,6 +8,7 @@ import { AddTransaction } from './pages/AddTransaction'
 import { Layout } from './components/Layout'
 import { PrivateRoute } from './Routes/PrivateRoute'
 import { PublicRoute } from './Routes/PublicRoute'
+import { EditPage } from './pages/EditPage'
 
 export const App = () => {
 	return (
@@ -23,6 +24,7 @@ export const App = () => {
 				<Route index element={<Dashboard />} />
 				<Route path='statistics' element={<Statistics />} />
 				<Route path='add-transaction' element={<AddTransaction />} />
+				<Route path='edit/:id' element={<EditPage />} />
 			</Route>
 			<Route
 				path='/login'
