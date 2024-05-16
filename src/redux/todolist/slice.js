@@ -1,4 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, isAnyOf } from '@reduxjs/toolkit'
+import {
+	addTodoThunk,
+	deleteTodoThunk,
+	editTodoThunk,
+	fetchTodosThunk,
+	likeTodoThunk,
+	toggleTodoThunk,
+} from './operations'
 
 // Створюємо початковий стан
 const initialState = {
@@ -20,50 +28,74 @@ const slice = createSlice({
 		selectIsLoading: state => state.isLoading,
 		selectIsError: state => state.isError,
 	},
-	// Створюємо редьюсери(екшени)
-	reducers: {
-		deleteTodo: (state, { payload }) => {
-			state.todos = state.todos.filter(item => item.id !== payload)
-		},
-		toggleTodo: (state, { payload }) => {
-			const item = state.todos.find(item => item.id === payload)
-			if (item) {
-				item.completed = !item.completed
-			}
-		},
-		likeTodo: (state, { payload }) => {
-			const item = state.todos.find(item => item.id === payload)
-			if (item) {
-				item.liked = !item.liked
-			}
-		},
-		editTodo: (state, { payload }) => {
-			const itemIndex = state.todos.findIndex(item => item.id === payload.id)
-			if (itemIndex !== -1) {
-				state.todos[itemIndex] = payload
-			}
-		},
 
-		addTodo: (state, { payload }) => {
-			state.todos.push(payload)
-		},
-		fetchDataSuccess: (state, { payload }) => {
-			state.todos = payload
-			state.isLoading = false
-		},
-		isError: (state, { payload }) => {
-			state.isError = payload
-		},
-		isLoading: (state, { payload }) => {
-			state.isLoading = payload
-		},
+	extraReducers: builder => {
+		builder
+
+			.addCase(fetchTodosThunk.fulfilled, (state, { payload }) => {
+				state.todos = payload
+			})
+			.addCase(deleteTodoThunk.fulfilled, (state, { payload }) => {
+				state.todos = state.todos.filter(item => item.id !== payload)
+			})
+			.addCase(addTodoThunk.fulfilled, (state, { payload }) => {
+				state.todos.push(payload)
+			})
+			.addCase(likeTodoThunk.fulfilled, (state, { payload }) => {
+				const item = state.todos.find(item => item.id === payload)
+				item.liked = !item.liked
+			})
+			.addCase(toggleTodoThunk.fulfilled, (state, { payload }) => {
+				const item = state.todos.find(item => item.id === payload)
+				item.completed = !item.completed
+			})
+			.addCase(editTodoThunk.fulfilled, (state, { payload }) => {
+				const item = state.todos.find(item => item.id === payload.id)
+				item.todo = payload.todo
+			})
+			.addMatcher(
+				isAnyOf(
+					fetchTodosThunk.pending,
+					likeTodoThunk.pending,
+					toggleTodoThunk.pending,
+					editTodoThunk.pending,
+					deleteTodoThunk.pending
+				),
+				state => {
+					state.error = false
+					state.isLoading = true
+				}
+			)
+			.addMatcher(
+				isAnyOf(
+					fetchTodosThunk.rejected,
+					likeTodoThunk.rejected,
+					toggleTodoThunk.rejected,
+					editTodoThunk.rejected,
+					deleteTodoThunk.rejected
+				),
+				state => {
+					state.isLoading = false
+					state.error = true
+				}
+			)
+			.addMatcher(
+				isAnyOf(
+					fetchTodosThunk.fulfilled,
+					likeTodoThunk.fulfilled,
+					toggleTodoThunk.fulfilled,
+					editTodoThunk.fulfilled,
+					deleteTodoThunk.fulfilled
+				),
+				state => {
+					state.isLoading = false
+				}
+			)
 	},
 })
 
 // експорт редьюсера (його стан, логіка)
 export const todoReducer = slice.reducer
-// екпорт екшенів - того, що написано в редьюсерах (reducers)
-export const { addTodo, deleteTodo, toggleTodo, likeTodo, editTodo, fetchDataSuccess, isError, isLoading } =
-	slice.actions
+
 // експорт селекторів
 export const { selectTodos, selectIsError, selectIsLoading } = slice.selectors
