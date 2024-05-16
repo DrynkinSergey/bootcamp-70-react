@@ -2,11 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 // Створюємо початковий стан
 const initialState = {
-	todos: [
-		{ id: 1, todo: 'Do something nice for someone I care about', completed: false, liked: false },
-		{ id: 2, todo: 'Memorize the fifty states and their capitals', completed: false, liked: false },
-		{ id: 3, todo: 'Watch a classic movie', completed: false, liked: false },
-	],
+	todos: [],
 	isLoading: false,
 	isError: false,
 }
@@ -21,6 +17,8 @@ const slice = createSlice({
 	// Маємо можливість отримувати селектори прям в слайсі
 	selectors: {
 		selectTodos: state => state.todos,
+		selectIsLoading: state => state.isLoading,
+		selectIsError: state => state.isError,
 	},
 	// Створюємо редьюсери(екшени)
 	reducers: {
@@ -68,4 +66,4 @@ export const todoReducer = slice.reducer
 export const { addTodo, deleteTodo, toggleTodo, likeTodo, editTodo, fetchDataSuccess, isError, isLoading } =
 	slice.actions
 // експорт селекторів
-export const { selectTodos } = slice.selectors
+export const { selectTodos, selectIsError, selectIsLoading } = slice.selectors

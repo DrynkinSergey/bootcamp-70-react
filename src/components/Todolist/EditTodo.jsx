@@ -1,12 +1,12 @@
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-import { editTodo } from '../../redux/todolist/slice'
+import { editTodoThunk } from '../../redux/todolist/operations'
 
 export const EditTodo = ({ todo, close }) => {
 	const dispatch = useDispatch()
 	const { register, handleSubmit } = useForm({ defaultValues: todo })
 	const submit = data => {
-		dispatch(editTodo(data))
+		dispatch(editTodoThunk(data))
 		close()
 	}
 	return (

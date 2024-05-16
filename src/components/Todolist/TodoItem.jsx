@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux'
 import { FaStar } from 'react-icons/fa'
-import { deleteTodo, likeTodo, toggleTodo } from '../../redux/todolist/slice'
+import { deleteTodoThunk, likeTodoThunk, toggleTodoThunk } from '../../redux/todolist/operations'
 
 export const TodoItem = ({ todo, openElement }) => {
 	const dispatch = useDispatch()
+
 	return (
 		<div className='card  bg-base-100 shadow-xl relative'>
 			{todo.liked && <FaStar color='gold' className='m-2 absolute right-1 top-1' />}
@@ -14,7 +15,7 @@ export const TodoItem = ({ todo, openElement }) => {
 						<span className='label-text'>Set as completed</span>
 						<input
 							type='checkbox'
-							onChange={() => dispatch(toggleTodo(todo.id))}
+							onChange={() => dispatch(toggleTodoThunk(todo))}
 							checked={todo.completed}
 							className='checkbox checkbox-primary'
 						/>
@@ -24,10 +25,10 @@ export const TodoItem = ({ todo, openElement }) => {
 					<button className='btn btn-secondary' onClick={() => openElement(todo)}>
 						Edit
 					</button>
-					<button className='btn btn-success' onClick={() => dispatch(likeTodo(todo.id))}>
+					<button className='btn btn-success' onClick={() => dispatch(likeTodoThunk(todo))}>
 						Like
 					</button>
-					<button className='btn btn-primary' onClick={() => dispatch(deleteTodo(todo.id))}>
+					<button className='btn btn-primary' onClick={() => dispatch(deleteTodoThunk(todo.id))}>
 						Delete
 					</button>
 				</div>

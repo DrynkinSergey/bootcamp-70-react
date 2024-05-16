@@ -1,23 +1,23 @@
 import { Field, Form, Formik } from 'formik'
-import { useDispatch } from 'react-redux'
-import { addTodo } from '../../redux/todolist/slice'
-import { nanoid } from '@reduxjs/toolkit'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectIsLoading } from '../../redux/todolist/slice'
+import { Loader } from '../Loader'
+import { addTodoThunk } from '../../redux/todolist/operations'
 
 export const AddForm = () => {
 	const dispatch = useDispatch()
 	const handleSubmit = (values, options) => {
 		dispatch(
-			addTodo({
+			addTodoThunk({
 				todo: values.todo,
-				id: nanoid(),
-				completed: false,
-				liked: false,
 			})
 		)
 		options.resetForm()
 	}
+	const isLoading = useSelector(selectIsLoading)
 	return (
-		<div className='flex bg-slate-200  justify-center items-center gap-2 mb-4 py-4'>
+		<div className='flex bg-slate-200  justify-center items-center gap-2 mb-4 py-4 relative'>
+			{isLoading && <Loader />}
 			<Formik initialValues={{ todo: '' }} onSubmit={handleSubmit}>
 				<Form className='flex gap-2'>
 					<Field className='input' name='todo' placeholder='Enter new todo...' />
