@@ -31,7 +31,6 @@ const slice = createSlice({
 
 	extraReducers: builder => {
 		builder
-
 			.addCase(fetchTodosThunk.fulfilled, (state, { payload }) => {
 				state.todos = payload
 			})
