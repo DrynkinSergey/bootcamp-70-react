@@ -7,6 +7,8 @@ const initialState = {
 		{ id: 2, todo: 'Memorize the fifty states and their capitals', completed: false, liked: false },
 		{ id: 3, todo: 'Watch a classic movie', completed: false, liked: false },
 	],
+	isLoading: false,
+	isError: false,
 }
 
 // Створюємо слайс
@@ -43,27 +45,19 @@ const slice = createSlice({
 				state.todos[itemIndex] = payload
 			}
 		},
-		// Підготовка пейлоада відбувається таким чином
-		// Спочатку викликається prepare
-		// Потім викликається reducer
 
-		// addTodo: {
-		// 	prepare: abc => {
-		// 		return {
-		// 			payload: {
-		// 				todo:abc,
-		// 				id: nanoid(),
-		// 				completed: false,
-		// 				liked: false,
-		// 			},
-		// 		}
-		// 	},
-		// 	reducer: (state, { payload }) => {
-		// 		state.todos.push(payload)
-		// 	},
-		// },
 		addTodo: (state, { payload }) => {
 			state.todos.push(payload)
+		},
+		fetchDataSuccess: (state, { payload }) => {
+			state.todos = payload
+			state.isLoading = false
+		},
+		isError: (state, { payload }) => {
+			state.isError = payload
+		},
+		isLoading: (state, { payload }) => {
+			state.isLoading = payload
 		},
 	},
 })
@@ -71,6 +65,7 @@ const slice = createSlice({
 // експорт редьюсера (його стан, логіка)
 export const todoReducer = slice.reducer
 // екпорт екшенів - того, що написано в редьюсерах (reducers)
-export const { addTodo, deleteTodo, toggleTodo, likeTodo, editTodo } = slice.actions
+export const { addTodo, deleteTodo, toggleTodo, likeTodo, editTodo, fetchDataSuccess, isError, isLoading } =
+	slice.actions
 // експорт селекторів
 export const { selectTodos } = slice.selectors
