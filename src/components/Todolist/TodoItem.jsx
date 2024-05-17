@@ -4,7 +4,6 @@ import { deleteTodoThunk, likeTodoThunk, toggleTodoThunk } from '../../redux/tod
 
 export const TodoItem = ({ todo, openElement }) => {
 	const dispatch = useDispatch()
-	console.log(likeTodoThunk())
 	return (
 		<div className='card  bg-base-100 shadow-xl relative'>
 			{todo.liked && <FaStar color='gold' className='m-2 absolute right-1 top-1' />}
