@@ -1,8 +1,11 @@
 import { useForm } from 'react-hook-form'
+import { useEditTodoMutation } from '../../redux/todoApi'
 
 export const EditTodo = ({ todo, close }) => {
 	const { register, handleSubmit } = useForm({ defaultValues: todo })
+	const [editTodo] = useEditTodoMutation()
 	const submit = data => {
+		editTodo(data)
 		close()
 	}
 	return (
