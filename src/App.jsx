@@ -1,4 +1,4 @@
-import { TodolistApp } from './components/Bonus/TodolistApp'
+import { TodolistApp } from './components/Todolist/TodolistApp'
 
 export const App = () => {
 	return (
