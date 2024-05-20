@@ -1,13 +1,17 @@
 import { Field, Form, Formik } from 'formik'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { registerThunk } from '../redux/auth/operations'
 
 export const Register = () => {
+	const dispatch = useDispatch()
 	const initialValues = {
 		name: '',
 		email: '',
 		password: '',
 	}
 	const handleSubmit = values => {
+		dispatch(registerThunk(values))
 		console.log(values)
 	}
 	return (
