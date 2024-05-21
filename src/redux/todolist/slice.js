@@ -36,7 +36,7 @@ const slice = createSlice({
 				state.todos = payload
 			})
 			// Використовуємо санку з логаутом в слайсі туду
-			.addCase(logoutThunk.fulfilled, state => {
+			.addCase(logoutThunk.fulfilled, () => {
 				return initialState
 			})
 			.addCase(deleteTodoThunk.fulfilled, (state, { payload }) => {

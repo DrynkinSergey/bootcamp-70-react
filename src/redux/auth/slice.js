@@ -24,7 +24,7 @@ const slice = createSlice({
 		selectIsRefreshing: state => state.isRefreshing,
 	},
 	reducers: {
-		doSomething: (state, action) => {
+		doSomething: () => {
 			toast.info('Я знаходжусь в AUTH SLICE')
 		},
 	},
