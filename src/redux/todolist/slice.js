@@ -7,6 +7,7 @@ import {
 	likeTodoThunk,
 	toggleTodoThunk,
 } from './operations'
+import { logoutThunk } from '../auth/operations'
 
 // Створюємо початковий стан
 const initialState = {
@@ -33,6 +34,10 @@ const slice = createSlice({
 		builder
 			.addCase(fetchTodosThunk.fulfilled, (state, { payload }) => {
 				state.todos = payload
+			})
+			// Використовуємо санку з логаутом в слайсі туду
+			.addCase(logoutThunk.fulfilled, state => {
+				return initialState
 			})
 			.addCase(deleteTodoThunk.fulfilled, (state, { payload }) => {
 				state.todos = state.todos.filter(item => item.id !== payload)

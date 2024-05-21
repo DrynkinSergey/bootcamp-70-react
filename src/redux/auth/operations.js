@@ -29,3 +29,23 @@ export const logoutThunk = createAsyncThunk('auth/logout', async (_, thunkApi) =
 		return thunkApi.rejectWithValue(error.message)
 	}
 })
+
+// refresh
+// Створюємо санку
+export const refreshThunk = createAsyncThunk('auth/refresh', async (_, thunkApi) => {
+	// витягуємо токен з редаксу
+	const token = thunkApi.getState().auth.token
+	// перевіряємо чи є він. Якщо ні - повертаємо помилку
+	if (!token) {
+		return thunkApi.rejectWithValue('No token exist!')
+	}
+	// якщо так - встановлюємо як хедер
+	setToken(token)
+	// робимо запит
+	try {
+		const { data } = await goitApi.get('users/me')
+		return data
+	} catch (error) {
+		return thunkApi.rejectWithValue(error.message)
+	}
+})

@@ -13,7 +13,7 @@ export const EditTodo = ({ todo, close }) => {
 		<div>
 			<form className='flex flex-col gap-4 py-10 px-4' onSubmit={handleSubmit(submit)}>
 				<input
-					{...register('todo')}
+					{...register('text')}
 					type='text'
 					placeholder='Enter new todo'
 					className='input input-bordered input-info w-full '

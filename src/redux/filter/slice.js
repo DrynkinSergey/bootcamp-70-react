@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { doSomething } from '../auth/slice'
+import { toast } from 'react-toastify'
 
 const initialState = {
 	filter: 'all',
@@ -14,6 +16,12 @@ const slice = createSlice({
 		setFilter: (state, { payload }) => {
 			state.filter = payload
 		},
+	},
+	extraReducers: builder => {
+		builder.addCase(doSomething, () => {
+			toast.info('Я перехопив екшен DO SOMETHING')
+			return initialState
+		})
 	},
 })
 

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { loginThunk, logoutThunk, registerThunk } from './operations'
+import { loginThunk, logoutThunk, refreshThunk, registerThunk } from './operations'
+import { toast } from 'react-toastify'
 
 const initialState = {
 	user: {
@@ -10,6 +11,7 @@ const initialState = {
 	isLoggedIn: false,
 	error: false,
 	isLoading: false,
+	isRefreshing: false,
 }
 
 const slice = createSlice({
@@ -19,6 +21,12 @@ const slice = createSlice({
 		selectUserName: state => state.user.name,
 		selectToken: state => state.token,
 		selectIsLoggedIn: state => state.isLoggedIn,
+		selectIsRefreshing: state => state.isRefreshing,
+	},
+	reducers: {
+		doSomething: (state, action) => {
+			toast.info('Я знаходжусь в AUTH SLICE')
+		},
 	},
 	extraReducers: builder => {
 		builder
@@ -35,8 +43,20 @@ const slice = createSlice({
 			.addCase(logoutThunk.fulfilled, () => {
 				return initialState
 			})
+			.addCase(refreshThunk.fulfilled, (state, action) => {
+				state.user = action.payload
+				state.isLoggedIn = true
+				state.isRefreshing = false
+			})
+			.addCase(refreshThunk.pending, state => {
+				state.isRefreshing = true
+			})
+			.addCase(refreshThunk.rejected, state => {
+				state.isRefreshing = false
+			})
 	},
 })
 
 export const authReducer = slice.reducer
-export const { selectIsLoggedIn, selectToken, selectUserName } = slice.selectors
+export const { selectIsLoggedIn, selectToken, selectUserName, selectIsRefreshing } = slice.selectors
+export const { doSomething } = slice.actions
